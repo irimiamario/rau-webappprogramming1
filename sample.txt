@@ -1,1 +1,2 @@
 Sample file with some text. 
+This is my first change.

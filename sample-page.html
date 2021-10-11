@@ -4,6 +4,17 @@
     <title>My first page</title>
     <link rel="stylesheet" href="styles/sample-page.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="test.js"></script>
+    <script>
+        function testFunction() {
+            console.log("test function");
+        };
+    </script>
+    <script>
+        function testFunction2() {
+            console.log("test 2");
+        }
+    </script>
 </head>
 
 <body>
@@ -15,6 +26,9 @@
     <p class="header-style">
         This is a styled paragraph.
     </p>
+    <button type="button" onclick="testFunction()">Try it</button>
+    <button type="button" onclick="testFunction2()">Try it 2</button>
+
 
     <div class="wrapper">
         <div>One</div>

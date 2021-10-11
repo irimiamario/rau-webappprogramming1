@@ -1,0 +1,9 @@
+.header-style {
+    color: blue;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 200px 200px;
+}

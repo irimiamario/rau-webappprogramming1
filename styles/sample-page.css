@@ -1,9 +1,25 @@
 .header-style {
     color: blue;
     font-family: 'Courier New', Courier, monospace;
+    font-size: 53px;
+}
+
+.header-modified-style {
+    color: green;
+    font-family: 'Roboto', Curier, monospace;
+    font-size: 60px;
+}
+
+.header-color {
+    color: red;
 }
 
 .wrapper {
     display: grid;
     grid-template-columns: 200px 200px;
+}
+
+h6 {
+    color: green;
+    font-size: 60px;
 }

@@ -109,3 +109,6 @@ def is_even(x):
 
 evens2 = filter(is_even, l)
 print(list(evens2))
+
+uppercase = map(lambda x: x.upper(), "abcdefg")
+print(list(uppercase))

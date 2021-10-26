@@ -63,3 +63,4 @@ while (s > 0) {
     console.log("Current value for s is: ", s);
     s = s - 1;
 }
+

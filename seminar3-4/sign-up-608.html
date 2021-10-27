@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <script src="sign-up-608.js"></script>
+    <link rel="stylesheet" href="sign-up.css" />
+  </head>
+  <body>
+    <div id="container">
+      <div>
+        <input name="name" type="text" placeholder="Your name" />
+      </div>
+      <div>
+        <input name="email" type="email" placeholder="Your email" />
+      </div>
+      <div>
+        <input name="password" type="password" placeholder="Password" />
+      </div>
+      <div>
+        <input
+          name="retry-password"
+          type="password"
+          placeholder="Re-enter password"
+        />
+      </div>
+      <div>
+        <button onclick="cancel()">Cancel</button>
+        <button onclick="change()">Sign-up</button>
+      </div>
+    </div>
+    <div id="sample-div">
+      <p>Paragraf 1</p>
+      <p>Paragraf 2</p>
+    </div>
+
+    <script>
+      function change() {
+        const div = document.getElementById("sample-div");
+        const p = document.createElement("p");
+        p.innerText = "Inserted";
+        div.insertBefore(p, div.children[1]);
+      }
+    </script>
+  </body>
+</html>

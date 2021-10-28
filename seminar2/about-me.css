@@ -1,0 +1,29 @@
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
+.center-img {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+h1 {
+    font-family: 'Courier New', Courier, monospace;
+    color: blue;
+}
+
+h2, h4 {
+    color: lightblue;
+}
+
+p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px;
+    color: #3f3f3f;
+    margin-right: 15%; 
+}

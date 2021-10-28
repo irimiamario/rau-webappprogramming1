@@ -1,0 +1,10 @@
+.new-paragraph {
+    font-size: 15px;
+    font-weight: 500;
+    font-family: 'Courier New', Courier, monospace;
+    color: blue;
+}
+
+h1 {
+    color: red;
+}

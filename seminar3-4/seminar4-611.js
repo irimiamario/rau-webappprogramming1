@@ -23,3 +23,22 @@ function changeStyle() {
     newDiv.appendChild(newPar);
     body.insertBefore(newDiv, div);
 }
+
+function appendElements() {
+    const body = document.querySelector('body')
+    const button = document.getElementsByName('button-left')[0];
+    for (let i = 0; i < 10; i++) {
+        // const p = document.createElement('p');
+        // p.innerText = `Paragraph # ${i + 1}`;
+        const p = createParagraph(`${i + 1}`);
+        body.insertBefore(p, button);
+    }
+}
+
+function createParagraph(text) {
+    const p = document.createElement('p');
+    p.innerText = `Paragraph # ${text}`;
+    p.classList.add('para');
+    p.style.fontSize = '15px';
+    return p;
+}

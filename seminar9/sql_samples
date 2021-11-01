@@ -1,0 +1,7 @@
+-- SQLite
+select * from companies;
+
+select * from users;
+
+select users.name as username, companies.name as company from users
+join companies on companies.id = users.company_id;

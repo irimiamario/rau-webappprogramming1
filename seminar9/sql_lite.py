@@ -85,12 +85,12 @@ class User(Resource):
                 users = get_username_and_email(conn)
                 users_json = json.dumps(users)
                 response = Response(response=users_json, status=200, content_type="application/json")
-            except Exception as e:
+            except:
                 conn.close()
                 response = Response('{"error": "Failed to get all users"}', status=500, content_type="application/json")    
         conn.close()
         return response 
-        
+
     def post(self):
         conn = create_connection("seminar9/users.db")
         data = request.json

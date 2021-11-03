@@ -14,5 +14,14 @@ print(parts)
 parts = s.split("is")
 print(parts)
 
-a = 13 % 2
+a = 13 % 2  # find out modul
 print(a)
+
+# line comment
+# other line comment
+
+"""
+This is a block of comments. 
+I usually use this when I have a longer text to explain 
+what the code does. 
+"""

@@ -12,7 +12,6 @@ hash_t1 = hash(t1)
 
 print(f"Hash for {t1} is {hash_t1}")
 
-#t2 = tuple([1, 2, 3])
 t2 = (1, 2, 3)
 hash_t2 = hash(t2)
 print(f"Hash for {t2} is {hash_t2}")

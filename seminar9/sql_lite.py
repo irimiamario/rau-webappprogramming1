@@ -1,3 +1,4 @@
+import os
 import sqlite3
 from sqlite3 import Error
 import json
@@ -85,7 +86,7 @@ api = Api(app)
 
 
 class User(Resource):
-    USER_DATABASE = "users.db"
+    USER_DATABASE = os.environ["RAU_WEBPROGRAMMING_USERS_DB"]
 
     def get(self, user_id=None):
         conn = create_connection(self.USER_DATABASE)

@@ -3,4 +3,5 @@
 *.xml
 __pychache/
 */__pychache/
-*.iml
+*.DS_Store
+*.pyc

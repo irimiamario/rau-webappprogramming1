@@ -55,8 +55,15 @@ def create_user(conn, user_details):
         print(f"--Failed to insert new users. Error: {e}.")
 
 
-def delete_user(conn, username):
-    query = f"delete from users where username='{username}'"
+def delete_user(conn, username=None, user_id=None):
+    if username is not None and user_id is None:
+        query = f"delete from users where username='{username}'"
+    elif username is None and user_id is not None:
+        query = f"delete from users where id={user_id}"
+    else:
+        print(f"--Unable to delete user. No user identification provided.")
+        raise Exception("Unable to delete user. No user identification provided.")
+
     try:
         cursor = conn.cursor()
         cursor.execute(query)
@@ -66,7 +73,7 @@ def delete_user(conn, username):
         print(f"--Failed to delete user = {username}. Error: {e}.")
 
 
-def edit_user(conn, username, details):
+def edit_user(conn, username=None, user_id=None, details=None):
     set_statement = ""
     for key, value in details.items():
         if type(value) == str:
@@ -75,7 +82,15 @@ def edit_user(conn, username, details):
             set_statement += f"{key}={value},"
     if len(set_statement) > 1:
         set_statement = set_statement[:-1]
-    query = f"update users set {set_statement} where username='{username}'"
+
+    if username is not None and user_id is None:
+        query = f"update users set {set_statement} where username='{username}'"
+    elif username is None and user_id is not None:
+        query = f"update users set {set_statement} where id={user_id}"
+    else:
+        print(f"--Unable to edit user. No user identification provided.")
+        raise Exception("Unable to edit user. No user identification provided.")
+
     try:
         cursor = conn.cursor()
         cursor.execute(query)

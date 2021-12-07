@@ -5,9 +5,12 @@ def connect(db_filename):
     try:
         conn = sqlite3.connect(db_filename)
         print("..SQLite connection established...")
+    except ValueError as ve:
+        print(f"--Invalid values provided. Error: {e}.")
+        raise ve
     except Exception as e:
         print(f"--Failed to connect to {db_filename}. Error: {e}.")
-        conn = None 
+        raise e
     return conn
 
 
@@ -20,7 +23,7 @@ def get_users(conn):
         return results
     except Exception as e:
         print(f"--Failed to get all users. Error: {e}.")
-        return []
+        raise e
 
 
 def get_user_by_username(conn, username):
@@ -38,7 +41,7 @@ def get_user_by_username(conn, username):
             return result
     except Exception as e:
         print(f"--Failed to get user = {username}. Error: {e}.")
-        return {}
+        raise e
 
 
 def create_user(conn, user_details):
@@ -51,8 +54,12 @@ def create_user(conn, user_details):
         cursor.execute(query, values)
         conn.commit()
         print("..User created successfully...")
+    except sqlite3.IntegrityError as ie:
+        print(f"--Failed to create user due to constraints not met. Error: {ie}.")
+        raise ValueError(ie)
     except Exception as e:
         print(f"--Failed to insert new users. Error: {e}.")
+        raise e
 
 
 def delete_user(conn, username=None, user_id=None):
@@ -71,6 +78,7 @@ def delete_user(conn, username=None, user_id=None):
         print("..User deleted successfully...")
     except Exception as e:
         print(f"--Failed to delete user = {username}. Error: {e}.")
+        raise e
 
 
 def edit_user(conn, username=None, user_id=None, details=None):
@@ -98,6 +106,7 @@ def edit_user(conn, username=None, user_id=None, details=None):
         print("..User edited successfully...")
     except Exception as e:
         print(f"--Failed to update user details. Error: {e}.")
+        raise e
 
 
 if __name__ == "__main__":

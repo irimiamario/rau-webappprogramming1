@@ -1,7 +1,7 @@
 from flask import Flask, request
-from seminar8.sqlite_repository import connect, edit_user, delete_user
+from seminar8.sqlite_repository import connect, edit_user, delete_user, get_users, create_user
 
-DB_FILE = "/Users/luchicila/work/rau-webappprogramming1/user_management_api/db/users.db"
+DB_FILE = "/Users/luchicila/work/rau/teaching/rau-webappprogramming1/user_management_api/db/users.db"
 
 app = Flask(__name__)
 
@@ -9,10 +9,62 @@ app = Flask(__name__)
 @app.route("/users", methods=["GET", "POST"])
 def users():
     if request.method == "GET":
-        pass
+        try:
+            conn = connect(DB_FILE)
+            data = get_users(conn)
+            conn.close()
+        except Exception as e:
+            response = {
+                "error": f"--Failed to connect to db or to get users. Error message: {e}."
+            }
+            return response, 500
+
+        try:
+            response = {
+                "users": []
+            }
+            for row in data:
+                # row = (id, username, first_name, last_name, email, password)
+                element = {
+                    "username": row[1],
+                    "first_name": row[2],
+                    "last_name": row[3],
+                    "email": row[4],
+                }
+                response["users"].append(element)
+            return response, 200
+        except Exception as e:
+            response = {
+                "error": f"--Failed to process users information. Error message: {e}."
+            }
+            return response, 500
 
     if request.method == "POST":
-        pass
+        """
+        {
+            "username": "user name",
+            "email": "email@me.com",
+            "first_name": "first name",
+            "last_name": "last name",
+            "password": "password"
+        }
+        """
+        user_data = request.json
+        try:
+            conn = connect(DB_FILE)
+            create_user(conn, user_data)
+            conn.close()
+            return "", 200
+        except ValueError as ve:
+            error = {
+                "error": f"--Invalid value provided user. Error message: {ve}."
+            }
+            return error, 400
+        except Exception as e:
+            error = {
+                "error": f"--Failed to create user. Error message: {e}."
+            }
+            return error, 500
 
 
 @app.route("/users/<user_id>", methods=["PUT", "DELETE"])

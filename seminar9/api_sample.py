@@ -1,9 +1,11 @@
 from flask import Flask, request
 from seminar8.sqlite_repository import connect, edit_user, delete_user, get_users, create_user
+from flask_cors import CORS
 
 DB_FILE = "/Users/luchicila/work/rau/teaching/rau-webappprogramming1/user_management_api/db/users.db"
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route("/users", methods=["GET", "POST"])

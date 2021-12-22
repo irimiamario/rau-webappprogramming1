@@ -36,14 +36,14 @@ def sign_in():
 
         if body.get("password") != user[1]:
             error = {
-                "error": "--Failed to signin. Username or password is wrong."
+                "error": "--Failed to sign in. Username or password is wrong."
             }
             return error, 401
 
         return '', 204
     except Exception as e:
         error = {
-            "error": f"--Failed to signin. Message: {e}"
+            "error": f"--Failed to sign in. Message: {e}"
         }
         return error, 500
 

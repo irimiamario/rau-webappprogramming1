@@ -19,12 +19,12 @@ DB_FILE = '/Users/luchicila/work/rau/teaching/rau-webappprogramming1/seminar11/d
 # 2.1. if the request body is empty, return an error with a relevant message and status 400
 # 3. create a try / except block containing the following functionality
 # 3.1. try branch
-# 3.1.1. Connect to the database using the connect() method in repository.py
+# 3.1.1. Connect to the database using the connect() method in repository_g608.py
 # 3.1.2. Convert the request body into a list with the values in the same order as expected by the create_user() method
-#       from repository.py
+#       from repository_g608.py
 # 3.1.3. check if password and second_password are the same
 # 3.1.3.1 if the passwords don't match, create an error with a relevant message and return with status code 400
-# 3.1.4. create a user using the create_user() method in repository.py
+# 3.1.4. create a user using the create_user() method in repository_g608.py
 # 3.1.5. return an empty response with status 204
 # 3.2. except branch
 # 3.2.1. create an error with a relevant message

@@ -1,8 +1,8 @@
 from flask import Flask, request
 from flask_cors import CORS
 
-from studdy_buddy_app.repository_g608 import DB_FILE
-from studdy_buddy_app.repository_g608 import connect_to_database, create_user
+from study_buddy_app.repository_g608 import DB_FILE
+from study_buddy_app.repository_g608 import connect_to_database, create_user
 
 app = Flask("UsersAPI")
 CORS(app)

@@ -1,7 +1,7 @@
 import sqlite3
 from datetime import datetime
 
-database = "/Users/luchicila/work/rau/teaching/rau-webappprogramming1/studdy_buddy_app/database/study_buddy_g612.db"
+database = "/Users/luchicila/work/rau/teaching/rau-webappprogramming1/study_buddy_app/database/study_buddy_g612.db"
 
 
 def connect_to_database(database_file):

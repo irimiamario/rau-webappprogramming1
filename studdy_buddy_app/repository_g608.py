@@ -1,7 +1,7 @@
 import sqlite3
 
 
-DB_FILE = "/Users/luchicila/work/rau/teaching/rau-webappprogramming1/studdy_buddy_app/database/study_buddy.db"
+DB_FILE = "/studdy_buddy_app/database/study_buddy_g608.db"
 
 
 def connect_to_database(path_to_db_file):

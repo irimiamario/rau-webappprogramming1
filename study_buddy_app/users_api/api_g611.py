@@ -32,6 +32,7 @@ def sign_in():
 
         conn = connect_to_database(database)
         user = get_email_and_password(conn, email)
+        conn.close()
         if not user:
             error = {
                 "error": "--Failed to sign in. User or password are wrong."

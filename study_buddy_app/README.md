@@ -40,9 +40,9 @@ Aplicatie web pentru studenti prin intermediul careia pot sa isi gaseasca parten
      * C# 5*
    * Anul de studiu (optional), integer
    * Email (optional), text
-   * Telefon (optional), text
+   * Telefon (optional), text (+40 835 354 355)
    * An absolvire (optional), integer
-   * Nivel (optional), ID (Licenta = 1, Master = 2)
+   * Nivel (optional), ID (Licenta = 1, Master = 2, Doctorat = 3)
 
 [comment]: <> (   [{"name": "algebra liniara", "level": 5},)
 [comment]: <> (   {"name": "matematica", "level": 2}])

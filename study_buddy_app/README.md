@@ -33,14 +33,16 @@ Aplicatie web pentru studenti prin intermediul careia pot sa isi gaseasca parten
    * ID, integer
    * UserID, integer
    * Facultatea, interger
-   * Specialitatea + nivel (stele de la 0 la 5, 0 = fara experienta, 5 = expert), text
+   * Skills (Specialitatea + nivel) (stele de la 0 la 5, 0 = fara experienta, 5 = expert), text
      * Algebra liniara 4*
      * Python 2*
      * C++ 1*
      * C# 5*
-   * Anul de studiu, integer
+   * Anul de studiu (optional), integer
    * Email (optional), text
    * Telefon (optional), text
+   * An absolvire (optional), integer
+   * Nivel (optional), ID (Licenta = 1, Master = 2)
 
 [comment]: <> (   [{"name": "algebra liniara", "level": 5},)
 [comment]: <> (   {"name": "matematica", "level": 2}])
@@ -48,3 +50,25 @@ Aplicatie web pentru studenti prin intermediul careia pot sa isi gaseasca parten
 2. MyProfile API
    * Editez profilul = endpoint care sa primeasca informatii despre user si sa le salveze in tabelul cu detalii
    * Vad profilul = endpoint care sa extraga din baza de date profilul unui utilizator
+
+#### Database structure
+
+* users 
+  * id
+  * first_name
+  * last_name
+  * email
+  * password
+  * faculty_id, foreign key faculties(id)
+  * study_year
+  * skills
+  * graduation_year
+  * level, foreign key levels(id)
+  
+* faculties 
+  * id
+  * name 
+
+* levels
+  * id
+  * name

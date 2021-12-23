@@ -16,12 +16,10 @@ Aplicatie web pentru studenti prin intermediul careia pot sa isi gaseasca parten
 #### Signup + signin
 
 1. O baza de date cu un tabel cu detaliile utilizatorilor
-   * ID, integer
    * First name, text
    * Last name, text
    * Email, text
    * Password, text
-   * Faculty ID, integer
 2. API Endpoint for signup 
    * primeste detaliile unui utilizator si il inregistreaza in baza de date
 3. API Endpoint for signin

@@ -36,12 +36,6 @@ def sign_in():
             }
             return error, 401
 
-        # if password != existing_password:
-        #     error = {
-        #         "error": "--Failed to sign in. Email or password are wrong."
-        #     }
-        #     return error, 401
-
         return '', 204
     except Exception as e:
         error = {

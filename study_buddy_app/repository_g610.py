@@ -20,6 +20,10 @@ def create_user(conn, body):
         datetime.utcnow(),
         datetime.utcnow(),
     )
+
+    if user_data[0] == '' or user_data[1] == '' or user_data[2] == '' or user_data[3] == '':
+        raise Exception("Missing user information")
+
     cursor = conn.cursor()
     cursor.execute(query, user_data)
     conn.commit()

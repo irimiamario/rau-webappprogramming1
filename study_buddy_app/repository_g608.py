@@ -1,3 +1,4 @@
+import json
 import sqlite3
 from datetime import datetime
 
@@ -57,6 +58,65 @@ def get_user_password(conn, email):
     return results[0][0]
 
 
+def get_user_profile(conn, user_id):
+    # create query to extract data from db for user_id
+    query = f"""select first_name, last_name, email, phone, year, knowledge, faculty.name as faculty_name from users 
+    join faculty on users.faculty_id = faculty.id
+    where users.id = {int(user_id)}"""
+
+    # run query
+    cursor = conn.cursor()
+    user_details = list(cursor.execute(query))
+
+    if len(user_details) == 0:
+        return {}
+
+    user_details = user_details[0]
+    skills = []
+    if user_details[5] is not None:
+        skills = json.loads(user_details[5])
+
+    profile = {
+        "first_name": user_details[0],
+        "last_name": user_details[1],
+        "email": user_details[2],
+        "phone": user_details[3],
+        "year": user_details[4],
+        "skills": skills,
+        "faculty_name": user_details[6]
+    }
+    return profile
+
+
+def update_user_profile(conn, user_details, user_id):
+    # create update query
+    set_statement = ''
+    for key, value in user_details.items():
+        if key in ["first_name", 'last_name', 'email', 'phone']:
+            if value is not None:
+                set_statement = set_statement + f"{key} = '{value}',"
+            else:
+                set_statement = set_statement + f"{key} = '',"
+
+        if key == 'year':
+            set_statement = set_statement + f"{key} = {value},"
+
+        if key == 'skills':
+            set_statement = set_statement + f"knowledge = '{json.dumps(value)}',"
+
+    set_statement = set_statement[:-1]
+    query = f"""UPDATE users SET {set_statement} WHERE id = {int(user_id)}"""
+
+    # execute query
+    cursor = conn.cursor()
+    cursor.execute(query)
+    conn.commit()
+
+
 if __name__ == "__main__":
     conn = connect_to_database(DB_FILE)
-    password = get_user_password(conn, 'a@a.xyz')
+    # password = get_user_password(conn, 'a@a.xyz')
+    profile = get_user_profile(conn, 1)
+    profile['year'] = 2022
+    profile['phone'] = '+444444444'
+    update_user_profile(conn, profile, 1)
